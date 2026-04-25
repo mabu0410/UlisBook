@@ -2,7 +2,7 @@ export const SITE_NAME = "ULIS BOOK – LOOP";
 export const SITE_TAGLINE = "Mạng lưới trao đổi giáo trình dành cho sinh viên ULIS";
 export const SITE_HEADLINE = "Trao sách cũ – Nhận tri thức";
 export const SITE_DESCRIPTION =
-  "ULIS BOOK – LOOP là mạng lưới trao đổi giáo trình dành cho sinh viên ULIS, giúp mua bán giáo trình cũ nhanh chóng, tiết kiệm và tiện lợi.";
+  "ULIS BOOK – LOOP là landing page trao đổi giáo trình dành cho sinh viên ULIS, giúp mua bán sách cũ nhanh, tiết kiệm và minh bạch.";
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://ulis-book-loop.vercel.app";
 
@@ -15,7 +15,9 @@ export const CONTACT = {
 export const NAV_LINKS = [
   { label: "Trang chủ", href: "#hero" },
   { label: "Giới thiệu", href: "#about" },
+  { label: "Vấn đề", href: "#problems" },
   { label: "Cách mua/bán", href: "#how-it-works" },
+  { label: "Gallery", href: "#gallery" },
   { label: "Liên hệ", href: "#contact" },
 ];
 

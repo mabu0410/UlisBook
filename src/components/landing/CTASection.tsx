@@ -1,109 +1,59 @@
-"use client";
-
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import Image from "next/image";
 import { BookOpen, ArrowRight } from "lucide-react";
-import { SMOOTH_EASE } from "@/constants/motion";
+import { LANDING_IMAGES } from "@/constants/images";
 
 export default function CTASection() {
-  const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
-  const scrollTo = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const ctaImage = LANDING_IMAGES.ctaStudents;
 
   return (
-    <section
-      id="cta"
-      ref={ref}
-      className="py-24 sm:py-32 relative overflow-hidden cta-bg"
-    >
-      {/* Decorative blobs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-[#9BC7EC]/20 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-[#AFD6F8]/25 blur-3xl" />
-      </div>
+    <section id="cta" className="relative overflow-hidden py-24 sm:py-32">
+      <Image
+        src={ctaImage.src}
+        alt={ctaImage.alt}
+        fill
+        loading="lazy"
+        sizes="100vw"
+        placeholder="blur"
+        blurDataURL={ctaImage.blurDataURL}
+        data-lazy-fade="true"
+        className="image-lazy object-cover"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(15,23,42,0.84),rgba(15,23,42,0.6))]" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.7, ease: SMOOTH_EASE }}
-          className="bg-white/70 backdrop-blur-xl rounded-4xl p-10 sm:p-14 border border-[#9BC7EC]/30 shadow-xl shadow-[#9BC7EC]/15"
-        >
-          {/* Icon */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1 }}
-            className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#9BC7EC] to-[#7AAFE0] flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[#9BC7EC]/30"
-          >
-            <BookOpen size={28} className="text-white" />
-          </motion.div>
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <div data-reveal="scale-in" className="glass-card mx-auto rounded-[2rem] border border-white/35 p-10 sm:p-14">
+          <span className="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#9BC7EC] to-[#7AAFE0] text-white shadow-lg shadow-[#9BC7EC]/35">
+            <BookOpen size={28} />
+          </span>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.15, duration: 0.6 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-4 font-display leading-tight"
+          <h2
+            className="mb-4 text-3xl font-bold leading-tight text-[#0F172A] sm:text-4xl lg:text-5xl"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Sẵn sàng trao đổi giáo trình cùng cộng đồng ULIS?
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-[#475569] text-lg leading-relaxed mb-10 max-w-2xl mx-auto"
-          >
-            Bắt đầu đăng sách cũ hoặc tìm giáo trình cần thiết chỉ trong vài thao tác đơn giản.
-          </motion.p>
+          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-[#334155]">
+            Bắt đầu đăng sách cũ hoặc tìm giáo trình bạn cần chỉ với vài thao tác đơn giản.
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.25, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <motion.button
-              onClick={() => scrollTo("how-it-works")}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              className="btn-primary text-white font-semibold px-8 py-4 rounded-2xl flex items-center gap-2 justify-center text-base"
-              aria-label="Khám phá sách"
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <a
+              href="#how-it-works"
+              className="btn-primary inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-base font-semibold text-white"
             >
               <BookOpen size={18} />
               Khám phá sách
-            </motion.button>
-            <motion.button
-              onClick={() => scrollTo("contact")}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              className="bg-[#0F172A] text-white font-semibold px-8 py-4 rounded-2xl flex items-center gap-2 justify-center text-base hover:bg-[#1E293B] transition-colors"
-              aria-label="Đăng sách ngay"
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#0F172A] px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-[#1E293B]"
             >
               Đăng sách ngay
               <ArrowRight size={18} />
-            </motion.button>
-          </motion.div>
-
-          {/* Trust indicators */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.4 }}
-            className="mt-10 flex flex-wrap justify-center gap-6 text-sm text-[#475569]"
-          >
-            {["✅ Miễn phí đăng sách", "🔒 Kết nối an toàn", "⚡ Tìm sách trong 60s"].map(
-              (item) => (
-                <span key={item} className="font-medium">
-                  {item}
-                </span>
-              )
-            )}
-          </motion.div>
-        </motion.div>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

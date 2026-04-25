@@ -1,176 +1,118 @@
-"use client";
+import Image from "next/image";
+import { BookOpen, Users, Sparkles } from "lucide-react";
+import { LANDING_IMAGES } from "@/constants/images";
 
-import { motion, useInView, type Variants } from "framer-motion";
-import { useRef } from "react";
-import { BookOpen, Users, ArrowLeftRight, Sparkles } from "lucide-react";
-import { SMOOTH_EASE } from "@/constants/motion";
-
-const fadeUp = (delay = 0): Variants => ({
-  hidden: { opacity: 0, y: 28 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { delay, duration: 0.6, ease: SMOOTH_EASE },
+const features = [
+  {
+    icon: BookOpen,
+    title: "Nền tảng chuyên biệt",
+    desc: "Lọc theo khoa, mã học phần và tình trạng sách để tìm đúng giáo trình ngay lần đầu.",
   },
-});
+  {
+    icon: Users,
+    title: "Cộng đồng tin cậy",
+    desc: "Kết nối trực tiếp giữa sinh viên ULIS, hạn chế nhiễu thông tin từ các nhóm rải rác.",
+  },
+  {
+    icon: Sparkles,
+    title: "Đơn giản và nhanh",
+    desc: "Đăng bán hoặc tìm mua chỉ với vài thao tác, tối ưu cho điện thoại và desktop.",
+  },
+];
 
-const toPx = (value: number) => `${value.toFixed(3)}px`;
+const stats = [
+  { value: "500+", label: "Sinh viên" },
+  { value: "200+", label: "Giáo trình" },
+  { value: "4", label: "Khoa ngôn ngữ" },
+];
 
 export default function AboutSection() {
-  const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const library = LANDING_IMAGES.aboutLibrary;
+  const books = LANDING_IMAGES.aboutBooks;
 
   return (
-    <section id="about" ref={ref} className="py-24 sm:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section label */}
-        <motion.div
-          variants={fadeUp(0)}
-          initial="hidden"
-          animate={inView ? "show" : "hidden"}
-          className="flex items-center gap-2 justify-center mb-4"
-        >
-          <div className="h-px w-10 bg-[#9BC7EC]" />
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#9BC7EC]">
-            Về chúng tôi
-          </span>
-          <div className="h-px w-10 bg-[#9BC7EC]" />
-        </motion.div>
-
-        <motion.h2
-          variants={fadeUp(0.05)}
-          initial="hidden"
-          animate={inView ? "show" : "hidden"}
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-[#0F172A] mb-16 font-display"
-          style={{ fontFamily: "'Playfair Display', serif" }}
-        >
-          ULIS BOOK – LOOP là gì?
-        </motion.h2>
-
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left: Text */}
-          <motion.div
-            variants={fadeUp(0.1)}
-            initial="hidden"
-            animate={inView ? "show" : "hidden"}
+    <section id="about" className="bg-white py-24 sm:py-32">
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <div>
+          <div data-reveal="fade-up" className="section-kicker">
+            Về dự án
+          </div>
+          <h2
+            data-reveal="fade-up"
+            data-reveal-delay="80"
+            className="mb-6 text-3xl font-bold text-[#0F172A] sm:text-4xl lg:text-5xl"
+            style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            <p className="text-[#475569] text-lg leading-relaxed mb-8">
-              <strong className="text-[#0F172A]">ULIS BOOK – LOOP</strong> là nền tảng hỗ trợ sinh viên ULIS{" "}
-              <strong className="text-[#0F172A]">trao đổi, mua bán giáo trình cũ</strong> một cách dễ dàng.
-              Dự án giúp tối ưu chi phí học tập và tận dụng lại nguồn tài liệu sẵn có trong cộng đồng sinh viên.
-            </p>
+            ULIS BOOK – LOOP là gì?
+          </h2>
 
-            <div className="space-y-4">
-              {[
-                {
-                  icon: BookOpen,
-                  title: "Nền tảng chuyên biệt",
-                  desc: "Được xây dựng riêng cho sinh viên ULIS, với hệ thống lọc theo khoa và mã học phần.",
-                },
-                {
-                  icon: Users,
-                  title: "Cộng đồng tin cậy",
-                  desc: "Kết nối trực tiếp giữa sinh viên trong trường, đảm bảo uy tín và an toàn.",
-                },
-                {
-                  icon: Sparkles,
-                  title: "Đơn giản & nhanh chóng",
-                  desc: "Đăng sách hoặc tìm sách chỉ trong vài thao tác, không phức tạp, không mất thời gian.",
-                },
-              ].map(({ icon: Icon, title, desc }, i) => (
-                <motion.div
-                  key={title}
-                  variants={fadeUp(0.15 + i * 0.07)}
-                  initial="hidden"
-                  animate={inView ? "show" : "hidden"}
-                  className="flex gap-4 p-4 rounded-2xl hover:bg-[#E3FDFE] transition-colors"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#9BC7EC] to-[#C4E5FB] flex items-center justify-center flex-shrink-0 shadow-sm">
-                    <Icon size={18} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-[#0F172A] mb-1">{title}</h3>
-                    <p className="text-sm text-[#475569] leading-relaxed">{desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+          <p data-reveal="fade-up" data-reveal-delay="150" className="mb-8 text-lg leading-relaxed text-[#475569]">
+            ULIS BOOK – LOOP là landing page kết nối sinh viên ULIS trong việc trao đổi giáo trình cũ.
+            Mục tiêu là giảm lãng phí sách, giảm chi phí đầu kỳ và tăng khả năng tiếp cận tài liệu cho toàn
+            trường.
+          </p>
 
-          {/* Right: Loop visual */}
-          <motion.div
-            variants={fadeUp(0.2)}
-            initial="hidden"
-            animate={inView ? "show" : "hidden"}
-            className="relative flex items-center justify-center"
-            aria-hidden="true"
-          >
-            <div className="relative w-full max-w-sm mx-auto">
-              {/* Center circle */}
-              <div className="relative w-56 h-56 mx-auto">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#C4E5FB] to-[#9BC7EC] opacity-20 animate-pulse" />
-                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-[#DAF1FE] to-[#C4E5FB] flex items-center justify-center border border-[#9BC7EC]/30 shadow-inner">
-                  <div className="text-center">
-                    <ArrowLeftRight size={32} className="text-[#6BAED6] mx-auto mb-2" />
-                    <p className="text-xs font-bold text-[#0F172A] uppercase tracking-wide">LOOP</p>
-                    <p className="text-[10px] text-[#475569]">Vòng lặp trao đổi</p>
-                  </div>
+          <div data-reveal="stagger" className="space-y-4">
+            {features.map(({ icon: Icon, title, desc }) => (
+              <article key={title} className="card flex gap-4 rounded-2xl border border-[#C1DDF3]/50 bg-[#F8FCFF] p-4">
+                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#9BC7EC] to-[#C4E5FB] text-white shadow-sm">
+                  <Icon size={18} />
+                </span>
+                <div>
+                  <h3 className="mb-1 font-semibold text-[#0F172A]">{title}</h3>
+                  <p className="text-sm leading-relaxed text-[#475569]">{desc}</p>
                 </div>
+              </article>
+            ))}
+          </div>
+        </div>
 
-                {/* Orbit nodes */}
-                {[
-                  { icon: BookOpen, label: "Sách cũ", angle: 0, color: "from-[#9BC7EC] to-[#C4E5FB]" },
-                  { icon: Users, label: "Sinh viên", angle: 120, color: "from-[#AFD6F8] to-[#9BC7EC]" },
-                  { icon: Sparkles, label: "Giá trị", angle: 240, color: "from-[#C4E5FB] to-[#AFD6F8]" },
-                ].map(({ icon: Icon, label, angle, color }) => {
-                  const rad = (angle * Math.PI) / 180;
-                  const r = 110;
-                  const x = Math.cos(rad) * r;
-                  const y = Math.sin(rad) * r;
-                  return (
-                    <motion.div
-                      key={label}
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      style={{ position: "absolute", top: "50%", left: "50%", transformOrigin: "0 0" }}
-                    >
-                      <motion.div
-                        animate={{ rotate: -360 }}
-                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                        style={{
-                          position: "absolute",
-                          top: toPx(y - 24),
-                          left: toPx(x - 24),
-                          width: "48px",
-                          height: "48px",
-                        }}
-                        className={`rounded-xl bg-gradient-to-br ${color} flex flex-col items-center justify-center shadow-lg cursor-default`}
-                      >
-                        <Icon size={18} className="text-white mb-0.5" />
-                        <span className="text-[8px] text-white font-semibold">{label}</span>
-                      </motion.div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-
-              {/* Stats below */}
-              <div className="flex justify-around mt-10">
-                {[
-                  { value: "500+", label: "Sinh viên" },
-                  { value: "200+", label: "Giáo trình" },
-                  { value: "4 Khoa", label: "Ngôn ngữ" },
-                ].map(({ value, label }) => (
-                  <div key={label} className="text-center">
-                    <p className="text-xl font-bold text-[#0F172A] font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
-                      {value}
-                    </p>
-                    <p className="text-xs text-[#475569]">{label}</p>
-                  </div>
-                ))}
-              </div>
+        <div>
+          <div data-reveal="fade-left" className="grid grid-cols-12 gap-4">
+            <div className="relative col-span-7 overflow-hidden rounded-3xl">
+              <Image
+                src={library.src}
+                alt={library.alt}
+                width={library.width}
+                height={library.height}
+                loading="lazy"
+                sizes="(min-width: 1024px) 360px, 60vw"
+                placeholder="blur"
+                blurDataURL={library.blurDataURL}
+                data-lazy-fade="true"
+                className="image-lazy h-full w-full object-cover"
+              />
             </div>
-          </motion.div>
+            <div className="relative col-span-5 overflow-hidden rounded-3xl">
+              <Image
+                src={books.src}
+                alt={books.alt}
+                width={books.width}
+                height={books.height}
+                loading="lazy"
+                sizes="(min-width: 1024px) 260px, 40vw"
+                placeholder="blur"
+                blurDataURL={books.blurDataURL}
+                data-lazy-fade="true"
+                className="image-lazy h-full w-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div data-reveal="fade-up" data-reveal-delay="120" data-stats className="mt-6 grid grid-cols-3 gap-3">
+            {stats.map((stat) => (
+              <div key={stat.label} className="rounded-2xl border border-[#C1DDF3]/50 bg-[#EAF7FF] p-4 text-center">
+                <p
+                  data-counter-target={stat.value}
+                  className="text-2xl font-bold text-[#0F172A]"
+                  style={{ fontFamily: "'Playfair Display', serif" }}
+                >
+                  0
+                </p>
+                <p className="text-xs font-medium text-[#475569]">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

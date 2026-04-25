@@ -10,11 +10,11 @@
     "lint:fix": "eslint --fix"
   },
   "dependencies": {
-    "framer-motion": "latest",
     "lucide-react": "latest",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@types/node": "latest",
