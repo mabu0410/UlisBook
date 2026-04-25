@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #E3FDFE;
+  --soft-bg: #DAF1FE;
+  --card-bg: #C4E5FB;
+  --primary: #9BC7EC;
+  --accent: #AFD6F8;
+  --muted: #C1DDF3;
+  --text-main: #0F172A;
+  --text-sub: #475569;
+  --white: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background-color: var(--bg);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--soft-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+/* Scroll padding for sticky header */
+section[id] {
+  scroll-margin-top: 72px;
+}
+
+/* Gradient mesh background */
+.hero-bg {
+  background: radial-gradient(ellipse at 20% 50%, #C4E5FB 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, #DAF1FE 0%, transparent 50%),
+              radial-gradient(ellipse at 60% 80%, #AFD6F8 0%, transparent 45%),
+              linear-gradient(135deg, #E3FDFE 0%, #DAF1FE 50%, #C4E5FB 100%);
+}
+
+.cta-bg {
+  background: radial-gradient(ellipse at 30% 50%, #9BC7EC33 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #AFD6F844 0%, transparent 60%),
+              linear-gradient(135deg, #DAF1FE 0%, #C4E5FB 100%);
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(155,199,236,0.3);
+}
+
+/* Glow button */
+.btn-primary {
+  background: linear-gradient(135deg, #9BC7EC, #AFD6F8);
+  box-shadow: 0 4px 20px rgba(155,199,236,0.4);
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #AFD6F8, #9BC7EC);
+  box-shadow: 0 6px 30px rgba(155,199,236,0.6);
+  transform: translateY(-1px);
+}
+
+/* Noise texture overlay */
+.noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #9BC7EC, #C4E5FB, #AFD6F8);
+  z-index: -1;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
