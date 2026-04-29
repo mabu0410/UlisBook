@@ -39,12 +39,12 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="#hero" className="inline-flex items-center gap-2.5 group" onClick={closeMenu}>
+        <a href="#hero" className="inline-flex items-center gap-3 group" onClick={closeMenu}>
           <div className="relative">
             <div className="absolute inset-0 rounded-xl bg-brand-medium/40 blur-md transition-opacity group-hover:opacity-100 opacity-0"></div>
-            <span className="relative inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-medium text-white shadow-lg shadow-brand-muted/50 transition-transform group-hover:scale-105">
-              <BookOpen size={20} />
-            </span>
+            <div className="relative flex h-10 w-10 items-center justify-center rounded-xl overflow-hidden shadow-lg shadow-brand-muted/50 transition-transform group-hover:scale-105 bg-white p-1">
+              <img src="/images/logo.png" alt="Logo" className="w-full h-full object-contain" />
+            </div>
           </div>
           <span className="font-heading text-lg font-bold tracking-wide text-brand-darkest">
             ULIS BOOK LOOP

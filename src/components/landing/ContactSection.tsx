@@ -17,7 +17,7 @@ export default function ContactSection() {
     <section id="contact" ref={ref} className="relative overflow-hidden bg-brand-darkest py-20 sm:py-32">
       <motion.div style={{ y }} className="absolute inset-0 z-0">
         <Image
-          src="/images/7.jpeg"
+          src="/images/11.png"
           alt="ULIS Book Loop Contact Background"
           fill
           className="object-cover opacity-30"
@@ -60,7 +60,7 @@ export default function ContactSection() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-brand-muted">Hotline</p>
-                <p className="text-base font-medium">0988 123 456</p>
+                <p className="text-base font-medium">0368004205</p>
               </div>
             </div>
             <div className="flex items-center gap-4 text-white">

@@ -10,6 +10,8 @@ import LandingEffects from "@/components/landing/LandingEffects";
 import Navbar from "@/components/landing/Navbar";
 import ReviewSection from "@/components/landing/ReviewSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
+import IntroSection from "@/components/landing/IntroSection";
+import HowItWorksSection from "@/components/landing/HowItWorksSection";
 
 export default function LandingPageClient() {
   const [mounted, setMounted] = useState(false);
@@ -29,10 +31,12 @@ export default function LandingPageClient() {
 
       <main>
         <Hero />
+        <IntroSection />
         <FeaturesSection />
+        <HowItWorksSection />
         <ImageSection />
-        <FormSection />
         <ReviewSection />
+        <FormSection />
         <ContactSection />
       </main>
 

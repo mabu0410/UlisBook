@@ -10,35 +10,27 @@ import { useCallback, useEffect, useState } from "react";
 const REVIEWS = [
   {
     name: "Nguyễn Thu Hà",
-    emoji: "👩‍🎓",
-    faculty: "Khoa Tiếng Hàn",
-    avatar: "/images/4.jpeg",
+    emoji: "⭐",
+    faculty: "Khoa Ngôn ngữ và văn hóa Anh",
+    avatar: "/images/14.png",
     quote:
       "Trước đây mình phải mua giáo trình mới rất tốn kém, nhưng từ khi dùng ULIS Book Loop mình đã đổi được sách với giá gần như 0 đồng. Rất tiện và tiết kiệm!",
   },
   {
-    name: "Lê Phương Anh",
+    name: "Khánh Linh",
     emoji: "👩‍🎓",
-    faculty: "Khoa Ngôn ngữ Nhật",
+    faculty: "Khoa Ngôn ngữ và văn hóa Hàn Quốc",
     avatar: "/images/5.jpeg",
     quote:
       "Mình không chỉ trao đổi sách mà còn kết nối được với nhiều bạn cùng ngành. Cảm giác cộng đồng rất rõ luôn.",
   },
   {
-    name: "Phạm Quang Huy",
+    name: "Hoàng Sơn",
     emoji: "👨‍🎓",
     faculty: "Khoa Ngôn ngữ Trung",
-    avatar: "/images/6.jpeg",
+    avatar: "/images/13.png",
     quote:
       "Giao diện dễ dùng, đăng bài nhanh, phản hồi cũng nhanh. Nói chung là nên có từ sớm!",
-  },
-  {
-    name: "Trần Minh Tùng",
-    emoji: "👨‍🎓",
-    faculty: "Khoa Sư phạm Tiếng Anh",
-    avatar: "/images/1.jpeg",
-    quote:
-      "Tuyệt vời! Việc tìm kiếm giáo trình cũ trở nên dễ dàng hơn bao giờ hết. Cảm ơn đội ngũ đã tạo ra một nền tảng hữu ích cho sinh viên.",
   }
 ];
 
@@ -80,7 +72,7 @@ export default function ReviewSection() {
             Đánh Giá Thực Tế
           </span>
           <h2 className="font-heading text-3xl font-bold text-brand-darkest sm:text-4xl">
-            Sinh viên ULIS nói gì về chúng tôi?
+            Sinh viên ULIS nói gì về ULIS Book Loop?
           </h2>
           <p className="mt-4 text-base leading-relaxed text-slate-600 font-medium">
             Những trải nghiệm thực tế từ sinh viên đã tham gia trao đổi giáo trình.
@@ -97,7 +89,7 @@ export default function ReviewSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className="relative h-full rounded-[2rem] border border-brand-light bg-white p-6 sm:p-8 shadow-xl shadow-brand-muted/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-muted/40 group"
+                    className="relative h-full rounded-[2rem] border border-brand-light bg-white p-6 sm:p-8 shadow-xl shadow-brand-muted/20 transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-brand-muted/40 group"
                   >
                     <div className="absolute top-6 right-6 text-brand-light transition-colors duration-300 group-hover:text-brand-medium/50">
                       <Quote size={40} fill="currentColor" />

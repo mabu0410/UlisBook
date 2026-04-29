@@ -19,12 +19,21 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-white pt-24 pb-16 lg:pt-32 lg:pb-24 min-h-screen flex items-center"
+      className="relative overflow-hidden bg-brand-lightest pt-24 pb-16 lg:pt-32 lg:pb-24 min-h-screen flex items-center"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-lightest via-white to-brand-lighter opacity-70" />
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/1.jpeg"
+          alt="Hero Background"
+          fill
+          priority
+          className="object-cover"
+        />
+      </div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-white/95 via-brand-lightest/85 to-white/95" />
       
       {/* Floating Animated Blobs */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden z-0">
         <motion.div
           animate={{
             y: [0, -30, 0],
@@ -45,7 +54,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -59,21 +68,20 @@ export default function Hero() {
             className="mb-6 inline-flex items-center rounded-full border border-brand-medium/20 bg-white/60 backdrop-blur-sm px-4 py-1.5 shadow-sm"
           >
             <span className="text-xs font-bold uppercase tracking-widest text-brand-darkest/80">
-              Cộng Đồng Trao Đổi
+              Mạng lưới trao đổi giáo trình
             </span>
             <span className="mx-2 h-3 w-px bg-brand-medium/30"></span>
             <span className="text-xs font-bold uppercase tracking-widest text-brand-medium">
-              Dành riêng cho ULIS
+              Dành cho sinh viên ULIS
             </span>
           </motion.div>
 
           <h1 className="font-heading text-4xl font-extrabold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl pb-2 text-transparent bg-clip-text bg-gradient-to-r from-brand-darkest via-brand-darkest to-brand-medium">
-            Tận Dụng Tối Đa Giá Trị Của Giáo Trình
+            Trao sách cũ – Nhận tri thức
           </h1>
 
-          <p className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl">
-            Trở thành một phần của mạng lưới trao đổi giáo trình dành riêng cho sinh viên ULIS.
-            Tiết kiệm chi phí - chia sẻ tri thức - lan tỏa giá trị học tập.
+          <p className="mt-6 text-lg leading-relaxed text-slate-700 sm:text-xl font-medium">
+            Kết nối sinh viên ULIS thông qua việc trao đổi, mua bán giáo trình cũ một cách nhanh chóng, tiết kiệm và tiện lợi.
           </p>
 
           <ul className="mt-8 space-y-4">

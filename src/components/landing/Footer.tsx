@@ -24,16 +24,19 @@ export default function Footer() {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           
-          <div className="lg:col-span-1">
-            <a href="#hero" className="inline-flex items-center gap-2 mb-6 group">
+          <div className="lg:col-span-4 flex flex-col items-center text-center mb-8">
+            <a href="#hero" className="inline-flex flex-col items-center gap-3 mb-6 group">
+              <div className="relative w-16 h-16">
+                <img src="/images/logo.png" alt="ULIS BOOK LOOP Logo" className="object-contain w-full h-full drop-shadow-md group-hover:scale-105 transition-transform" />
+              </div>
               <span className="font-heading text-2xl font-bold tracking-wide text-white group-hover:text-brand-light transition-colors">
                 ULIS BOOK LOOP
               </span>
             </a>
-            <p className="text-sm text-brand-muted leading-relaxed mb-8">
-              Nền tảng trao đổi giáo trình lớn nhất dành riêng cho sinh viên Đại học Ngoại ngữ - ĐHQGHN. Kết nối, tiết kiệm và lan tỏa tri thức.
+            <p className="text-sm text-brand-muted leading-relaxed max-w-lg">
+              Hãy cùng ULIS BOOK – LOOP dọn tủ sách cũ – không lo thiếu sách trong năm học mới!
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 mt-6">
               <a href="#" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-brand-light transition-all hover:bg-brand-medium hover:text-brand-darkest hover:scale-110">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
               </a>
@@ -79,7 +82,7 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-brand-muted">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-brand-light shrink-0 mt-0.5" />
-                <span>Số 2 Phạm Văn Đồng, Cầu Giấy, Hà Nội</span>
+                <span>Trường Đại học Ngoại ngữ – ĐHQGHN</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-brand-light shrink-0" />
@@ -87,7 +90,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-brand-light shrink-0" />
-                <span>0988 123 456</span>
+                <span>0368004205</span>
               </li>
             </ul>
           </div>
