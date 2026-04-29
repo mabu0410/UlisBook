@@ -9,6 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        brand: {
+          lightest: "#E3FDFE",
+          lighter: "#DAF1FE",
+          light: "#C4E5FB",
+          medium: "#9BC7EC",
+          dark: "#AFD6F8",
+          muted: "#C1DDF3",
+          darkest: "#0F172A",
+        },
         background: "#E3FDFE",
         "soft-bg": "#DAF1FE",
         "card-bg": "#C4E5FB",
