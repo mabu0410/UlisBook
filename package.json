@@ -10,12 +10,15 @@
     "lint:fix": "eslint --fix"
   },
   "dependencies": {
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.38.0",
     "lucide-react": "latest",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "sonner": "^2.0.7"
   },
   "devDependencies": {
     "@types/node": "latest",

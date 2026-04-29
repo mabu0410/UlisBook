@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { JSON_LD, SITE_DESCRIPTION, SITE_URL } from "@/constants/site";
+import { Toaster } from "sonner";
 
 const jsonLdPayload = JSON.stringify(JSON_LD).replace(/</g, "\\u003c");
 
@@ -58,6 +59,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: jsonLdPayload }}
         />
         {children}
+        <Toaster position="bottom-center" richColors />
       </body>
     </html>
   );

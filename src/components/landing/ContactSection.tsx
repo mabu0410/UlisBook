@@ -1,79 +1,129 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { useRef } from "react";
 
 export default function ContactSection() {
-  return (
-    <section id="contact" className="relative overflow-hidden py-14 sm:py-16 lg:py-20">
-      <Image
-        src="/images/7.jpeg"
-        alt="Khuôn viên ULIS"
-        fill
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-darkest/90 to-brand-darkest/70" />
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
 
-      <div className="relative mx-auto grid w-full max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_1.05fr] lg:gap-10 lg:px-8">
+  return (
+    <section id="contact" ref={ref} className="relative overflow-hidden bg-brand-darkest py-20 sm:py-32">
+      <motion.div style={{ y }} className="absolute inset-0 z-0">
+        <Image
+          src="/images/7.jpeg"
+          alt="ULIS Book Loop Contact Background"
+          fill
+          className="object-cover opacity-30"
+          sizes="100vw"
+        />
+      </motion.div>
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-brand-darkest via-brand-darkest/80 to-brand-darkest/40" />
+
+      <div className="relative z-20 mx-auto grid w-full max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col justify-center"
         >
-          <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl">Liên hệ với chúng tôi</h2>
-          <p className="mt-4 max-w-lg text-sm leading-relaxed text-slate-200 sm:text-base">
-            Đội ngũ ULIS Book Loop luôn sẵn sàng hỗ trợ bạn tham gia cộng đồng, tìm giáo trình phù
-            hợp và kết nối nhanh với sinh viên cùng chuyên ngành.
+          <span className="inline-block py-1 px-3 rounded-full border border-white/20 bg-white/10 text-white text-sm font-semibold tracking-wider uppercase mb-6 w-max backdrop-blur-sm">
+            Liên hệ với chúng tôi
+          </span>
+          <h2 className="font-heading text-3xl font-bold text-white sm:text-5xl leading-tight">
+            Bạn cần hỗ trợ thêm?
+          </h2>
+          <p className="mt-6 text-lg text-brand-muted leading-relaxed max-w-md">
+            Đội ngũ ULIS Book Loop luôn sẵn sàng hỗ trợ bạn tham gia cộng đồng, tìm giáo trình phù hợp và kết nối nhanh với sinh viên cùng chuyên ngành.
           </p>
 
-          <div className="mt-6 space-y-3 text-sm text-slate-100 sm:text-base">
-            <p>
-              <span className="font-semibold text-brand-medium">Email:</span> ulisbookloop@gmail.com
-            </p>
-            <p>
-              <span className="font-semibold text-brand-medium">Hotline:</span> 0988 123 456
-            </p>
-            <p>
-              <span className="font-semibold text-brand-medium">Địa chỉ:</span> Trường Đại học Ngoại ngữ
-              - ĐHQGHN
-            </p>
+          <div className="mt-10 space-y-6">
+            <div className="flex items-center gap-4 text-white">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                <Mail size={24} className="text-brand-light" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-brand-muted">Email</p>
+                <p className="text-base font-medium">ulisbookloop@gmail.com</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 text-white">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                <Phone size={24} className="text-brand-light" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-brand-muted">Hotline</p>
+                <p className="text-base font-medium">0988 123 456</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 text-white">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                <MapPin size={24} className="text-brand-light" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-brand-muted">Địa chỉ</p>
+                <p className="text-base font-medium">Trường Đại học Ngoại ngữ - ĐHQGHN</p>
+              </div>
+            </div>
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-2xl border border-brand-light bg-white/80 p-5 shadow-2xl shadow-brand-darkest/50 backdrop-blur-md sm:p-6"
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h3 className="font-heading text-xl font-semibold text-brand-darkest">Form liên hệ nhanh</h3>
+          <div className="rounded-[2rem] border border-white/20 bg-white/10 p-8 backdrop-blur-xl shadow-2xl shadow-black/50 sm:p-10 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full pointer-events-none" />
+            <h3 className="font-heading text-2xl font-bold text-white mb-6">Form liên hệ nhanh</h3>
+            
+            <form className="space-y-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid gap-6 sm:grid-cols-2">
+                <label className="block">
+                  <span className="mb-2 block text-sm font-semibold text-brand-light">Họ và tên</span>
+                  <input
+                    type="text"
+                    placeholder="Nhập họ và tên"
+                    className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3.5 text-base text-white placeholder-white/40 outline-none transition-all focus:border-brand-light focus:bg-white/10 focus:ring-4 focus:ring-brand-light/20"
+                  />
+                </label>
 
-          <form className="mt-4 space-y-3">
-            <input
-              type="text"
-              placeholder="Họ và tên"
-              className="w-full rounded-xl border border-brand-light bg-white px-4 py-3 text-sm text-brand-darkest outline-none transition focus:border-brand-medium focus:ring-4 focus:ring-brand-medium/20"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full rounded-xl border border-brand-light bg-white px-4 py-3 text-sm text-brand-darkest outline-none transition focus:border-brand-medium focus:ring-4 focus:ring-brand-medium/20"
-            />
-            <textarea
-              rows={4}
-              placeholder="Nội dung cần hỗ trợ"
-              className="w-full resize-none rounded-xl border border-brand-light bg-white px-4 py-3 text-sm text-brand-darkest outline-none transition focus:border-brand-medium focus:ring-4 focus:ring-brand-medium/20"
-            />
-            <button
-              type="submit"
-              className="inline-flex w-full items-center justify-center rounded-xl bg-brand-darkest px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-muted/50 transition duration-300 hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-[0_0_15px_rgba(155,199,236,0.6)]"
-            >
-              Gửi liên hệ
-            </button>
-          </form>
+                <label className="block">
+                  <span className="mb-2 block text-sm font-semibold text-brand-light">Email</span>
+                  <input
+                    type="email"
+                    placeholder="Email của bạn"
+                    className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3.5 text-base text-white placeholder-white/40 outline-none transition-all focus:border-brand-light focus:bg-white/10 focus:ring-4 focus:ring-brand-light/20"
+                  />
+                </label>
+              </div>
+
+              <label className="block">
+                <span className="mb-2 block text-sm font-semibold text-brand-light">Nội dung cần hỗ trợ</span>
+                <textarea
+                  rows={4}
+                  placeholder="Bạn muốn hỏi gì..."
+                  className="w-full resize-none rounded-xl border border-white/20 bg-white/5 px-4 py-3.5 text-base text-white placeholder-white/40 outline-none transition-all focus:border-brand-light focus:bg-white/10 focus:ring-4 focus:ring-brand-light/20"
+                ></textarea>
+              </label>
+
+              <button
+                type="submit"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-4 text-base font-bold text-brand-darkest transition-all hover:bg-brand-lightest hover:scale-[1.02]"
+              >
+                Gửi liên hệ
+                <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
+              </button>
+            </form>
+          </div>
         </motion.div>
       </div>
     </section>
