@@ -36,7 +36,7 @@ const REVIEWS = [
 
 export default function ReviewSection() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" }, [
-    Autoplay({ delay: 4000, stopOnInteraction: true }),
+    Autoplay({ delay: 5000, stopOnInteraction: true }),
   ]);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -59,65 +59,69 @@ export default function ReviewSection() {
 
   return (
     <section id="reviews" className="bg-white py-16 sm:py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-lightest/50 to-white pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-lightest/40 to-white pointer-events-none" />
+      <div className="absolute right-0 top-0 -z-10 m-auto h-[400px] w-[400px] rounded-full bg-brand-lightest/60 opacity-60 blur-[120px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
+      
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="mx-auto max-w-3xl text-center mb-12"
+          className="mx-auto max-w-3xl text-center mb-16"
         >
-          <span className="inline-block py-1 px-3 rounded-full bg-brand-lighter text-brand-darkest text-sm font-semibold tracking-wider uppercase mb-4">
+          <span className="inline-block py-1.5 px-4 rounded-full bg-brand-lighter/80 border border-brand-light/50 text-brand-darkest text-xs font-bold tracking-widest uppercase mb-6 shadow-sm backdrop-blur-sm">
             Đánh Giá Thực Tế
           </span>
-          <h2 className="font-heading text-3xl font-bold text-brand-darkest sm:text-4xl">
+          <h2 className="font-heading text-4xl font-extrabold text-brand-darkest sm:text-5xl tracking-tight drop-shadow-sm mb-6">
             Sinh viên ULIS nói gì về ULIS Book Loop?
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-600 font-medium">
+          <p className="text-lg leading-relaxed text-slate-600 font-medium">
             Những trải nghiệm thực tế từ sinh viên đã tham gia trao đổi giáo trình.
           </p>
         </motion.div>
 
         <div className="relative">
-          <div className="overflow-hidden cursor-grab active:cursor-grabbing pb-8 -mx-4 px-4 sm:mx-0 sm:px-0" ref={emblaRef}>
-            <div className="flex backface-hidden -ml-4">
+          <div className="overflow-hidden cursor-grab active:cursor-grabbing pb-12 -mx-4 px-4 sm:mx-0 sm:px-0" ref={emblaRef}>
+            <div className="flex backface-hidden -ml-6">
               {REVIEWS.map((review, i) => (
-                <div key={i} className="pl-4 min-w-[85%] sm:min-w-[50%] lg:min-w-[33.333%] shrink-0">
+                <div key={i} className="pl-6 min-w-[90%] sm:min-w-[60%] lg:min-w-[40%] shrink-0">
                   <motion.article
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className="relative h-full rounded-[2rem] border border-brand-light bg-white p-6 sm:p-8 shadow-xl shadow-brand-muted/20 transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-brand-muted/40 group"
+                    transition={{ duration: 0.6, delay: i * 0.15 }}
+                    className="relative h-full rounded-[2.5rem] border border-brand-light/40 bg-white/60 backdrop-blur-xl p-8 sm:p-10 shadow-xl shadow-brand-muted/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-brand-muted/40 group overflow-hidden"
                   >
-                    <div className="absolute top-6 right-6 text-brand-light transition-colors duration-300 group-hover:text-brand-medium/50">
-                      <Quote size={40} fill="currentColor" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-brand-lightest/40 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10"></div>
+                    
+                    <div className="absolute top-8 right-8 text-brand-light/60 transition-all duration-500 group-hover:text-brand-medium/40 group-hover:scale-110 group-hover:rotate-12">
+                      <Quote size={48} fill="currentColor" />
                     </div>
                     
-                    <div className="mb-6 flex items-center gap-4 relative z-10">
-                      <div className="relative h-16 w-16 overflow-hidden rounded-full ring-4 ring-brand-lightest group-hover:ring-brand-light transition-all">
+                    <div className="mb-8 flex items-center gap-5 relative z-10">
+                      <div className="relative h-16 w-16 overflow-hidden rounded-2xl ring-4 ring-brand-lightest group-hover:ring-brand-light transition-all shadow-md">
                         <Image
                           src={review.avatar}
                           alt={review.name}
                           fill
                           sizes="64px"
-                          className="object-cover"
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                       </div>
                       <div>
-                        <p className="text-base font-bold text-brand-darkest">{review.name} {review.emoji}</p>
-                        <p className="text-sm text-brand-medium font-semibold">{review.faculty}</p>
+                        <p className="text-[1.1rem] font-bold text-brand-darkest mb-1">{review.name} {review.emoji}</p>
+                        <p className="text-[0.85rem] text-brand-medium font-bold uppercase tracking-wider">{review.faculty}</p>
                       </div>
                     </div>
 
-                    <p className="text-base leading-relaxed text-slate-600 relative z-10 italic">
+                    <p className="text-[1.05rem] leading-relaxed text-slate-600 relative z-10 italic font-medium">
                       "{review.quote}"
                     </p>
                     
-                    <div className="mt-6 flex gap-1 text-brand-medium">
+                    <div className="mt-8 flex gap-1.5 text-[#F59E0B]">
                       {[1, 2, 3, 4, 5].map((star) => (
-                        <svg key={star} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <svg key={star} className="w-5 h-5 fill-current drop-shadow-sm group-hover:scale-110 transition-transform" style={{ transitionDelay: `${star * 50}ms` }} viewBox="0 0 20 20">
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                       ))}
@@ -128,12 +132,12 @@ export default function ReviewSection() {
             </div>
           </div>
 
-          <div className="mt-6 flex justify-center gap-3">
+          <div className="flex justify-center gap-3">
             {REVIEWS.map((_, i) => (
               <button
                 key={i}
                 className={`h-2.5 rounded-full transition-all duration-300 ${
-                  i === selectedIndex ? "w-8 bg-brand-darkest" : "w-2.5 bg-brand-medium/40 hover:bg-brand-medium"
+                  i === selectedIndex ? "w-10 bg-brand-darkest shadow-md" : "w-2.5 bg-brand-medium/30 hover:bg-brand-medium"
                 }`}
                 onClick={() => scrollTo(i)}
                 aria-label={`Go to slide ${i + 1}`}
