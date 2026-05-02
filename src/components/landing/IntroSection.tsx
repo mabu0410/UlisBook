@@ -60,7 +60,7 @@ export default function IntroSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.6 }}
-              className="font-heading text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-950 to-emerald-600 sm:text-5xl mb-8 drop-shadow-sm leading-tight"
+              className="font-heading text-4xl font-black text-emerald-950 sm:text-5xl mb-8 drop-shadow-sm leading-tight"
             >
               ULIS BOOK – LOOP là gì?
             </motion.h2>
@@ -69,7 +69,7 @@ export default function IntroSection() {
                whileInView={{ opacity: 1, x: 0 }}
                viewport={{ once: true }}
                transition={{ delay: 0.3, duration: 0.6 }}
-               className="text-xl text-slate-600 leading-relaxed font-medium"
+               className="text-xl text-slate-800 leading-relaxed font-bold"
             >
               ULIS BOOK – LOOP là nền tảng hỗ trợ sinh viên ULIS trao đổi, mua bán giáo trình cũ một cách dễ dàng. Dự án giúp tối ưu chi phí học tập và tận dụng lại nguồn tài liệu sẵn có trong cộng đồng sinh viên.
             </motion.p>

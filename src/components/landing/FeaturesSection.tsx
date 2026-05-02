@@ -62,7 +62,7 @@ export default function FeaturesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="font-heading text-4xl font-extrabold text-emerald-950 sm:text-5xl mb-6 tracking-tight drop-shadow-sm"
+            className="font-heading text-4xl font-black text-emerald-950 sm:text-5xl mb-6 tracking-tight drop-shadow-sm"
           >
             Tại sao nên dùng ULIS Book Loop?
           </motion.h2>
@@ -71,7 +71,7 @@ export default function FeaturesSection() {
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
              transition={{ delay: 0.2, duration: 0.6 }}
-             className="text-lg text-slate-600 font-medium"
+             className="text-xl text-slate-800 font-bold"
           >
             Nền tảng được thiết kế chuyên biệt để giúp sinh viên Ngoại ngữ giải quyết triệt để vấn đề giáo trình mỗi dịp đầu kỳ.
           </motion.p>

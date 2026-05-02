@@ -56,7 +56,7 @@ export default function HowItWorksSection() {
           <span className="inline-block py-1.5 px-4 rounded-full bg-white/60 border border-emerald-100 text-emerald-900 text-xs font-bold tracking-widest uppercase mb-6 shadow-sm backdrop-blur-sm">
             Đơn Giản & Hiệu Quả
           </span>
-          <h2 className="font-heading text-4xl font-extrabold text-emerald-950 sm:text-5xl flex items-center justify-center gap-4 tracking-tight drop-shadow-sm">
+          <h2 className="font-heading text-4xl font-black text-emerald-950 sm:text-5xl flex items-center justify-center gap-4 tracking-tight drop-shadow-sm">
             <span>🎥</span> Cách mua/bán trong 60s
           </h2>
         </motion.div>

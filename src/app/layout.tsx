@@ -1,7 +1,20 @@
 import type { Metadata } from "next";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { JSON_LD, SITE_DESCRIPTION, SITE_URL } from "@/constants/site";
 import { Toaster } from "sonner";
+
+const inter = Inter({
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const outfit = Outfit({
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-outfit",
+  display: "swap",
+});
 
 const jsonLdPayload = JSON.stringify(JSON_LD).replace(/</g, "\\u003c");
 
@@ -51,7 +64,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi" suppressHydrationWarning>
-      <body className="antialiased" suppressHydrationWarning>
+      <body className={`${inter.variable} ${outfit.variable} font-sans antialiased`} suppressHydrationWarning>
         <script
           id="website-json-ld"
           type="application/ld+json"

@@ -60,7 +60,8 @@ export default function Hero() {
       style={{ backgroundImage: "url('/images/image.png')" }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-emerald-50/70 via-white/40 to-teal-100/50" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-white/85 via-emerald-50/80 to-teal-100/75" />
+      <div className="absolute inset-0 z-0 bg-white/20 backdrop-blur-[1px]" />
 
       {/* Bubble effect */}
       <BubbleBackground count={24} minSize={10} maxSize={42} />
@@ -99,16 +100,17 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="font-heading text-5xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl pb-3 text-transparent bg-clip-text bg-gradient-to-br from-emerald-950 via-emerald-800 to-teal-600 drop-shadow-sm"
+            className="font-heading text-5xl font-black leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl pb-4 text-emerald-950 drop-shadow-sm"
           >
-            Trao sách cũ – <br />Nhận tri thức
+            Trao sách cũ – <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Nhận tri thức</span>
           </motion.h1>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl font-medium max-w-xl"
+            className="mt-8 text-xl leading-relaxed text-slate-700 sm:text-2xl font-semibold max-w-xl"
           >
             Kết nối sinh viên ULIS thông qua việc trao đổi, mua bán giáo trình cũ một cách nhanh chóng, tiết kiệm và tiện lợi.
           </motion.p>
@@ -125,7 +127,7 @@ export default function Hero() {
                 <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-500 shadow-sm ring-1 ring-emerald-100">
                   <CheckCircle2 size={16} strokeWidth={3} />
                 </div>
-                <span className="text-[1.05rem] font-semibold text-slate-700">{item}</span>
+                <span className="text-lg font-bold text-emerald-950">{item}</span>
               </motion.li>
             ))}
           </ul>
