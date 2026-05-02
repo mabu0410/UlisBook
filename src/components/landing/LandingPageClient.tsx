@@ -5,7 +5,6 @@ import ContactSection from "@/components/landing/ContactSection";
 import Footer from "@/components/landing/Footer";
 import FormSection from "@/components/landing/FormSection";
 import Hero from "@/components/landing/Hero";
-import ImageSection from "@/components/landing/ImageSection";
 import LandingEffects from "@/components/landing/LandingEffects";
 import Navbar from "@/components/landing/Navbar";
 import ReviewSection from "@/components/landing/ReviewSection";
@@ -34,7 +33,6 @@ export default function LandingPageClient() {
         <IntroSection />
         <FeaturesSection />
         <HowItWorksSection />
-        <ImageSection />
         <ReviewSection />
         <FormSection />
         <ContactSection />

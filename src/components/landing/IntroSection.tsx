@@ -45,43 +45,48 @@ export default function IntroSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-50/40 via-white to-white pointer-events-none" />
       
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+          <div className="text-left">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, x: -20 }}
+              whileInView={{ opacity: 1, scale: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-block py-1.5 px-4 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold tracking-widest uppercase mb-6 shadow-sm backdrop-blur-sm"
+            >
+              Giới Thiệu
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              className="font-heading text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-950 to-emerald-600 sm:text-5xl mb-8 drop-shadow-sm leading-tight"
+            >
+              ULIS BOOK – LOOP là gì?
+            </motion.h2>
+            <motion.p
+               initial={{ opacity: 0, x: -30 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ delay: 0.3, duration: 0.6 }}
+               className="text-xl text-slate-600 leading-relaxed font-medium"
+            >
+              ULIS BOOK – LOOP là nền tảng hỗ trợ sinh viên ULIS trao đổi, mua bán giáo trình cũ một cách dễ dàng. Dự án giúp tối ưu chi phí học tập và tận dụng lại nguồn tài liệu sẵn có trong cộng đồng sinh viên.
+            </motion.p>
+          </div>
+
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 10 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block py-1.5 px-4 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold tracking-widest uppercase mb-6 shadow-sm backdrop-blur-sm"
-          >
-            Giới Thiệu
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.6 }}
-            className="font-heading text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-950 to-emerald-600 sm:text-5xl mb-8 drop-shadow-sm"
-          >
-            ULIS BOOK – LOOP là gì?
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            initial={{ opacity: 0, scale: 0.8, x: 30 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-            className="flex justify-center mb-8 relative"
+            className="flex justify-center lg:justify-end relative"
           >
-            <div className="absolute inset-0 bg-emerald-100/20 blur-2xl rounded-full w-32 h-32 mx-auto"></div>
-            <img src="/images/logo.png" alt="Logo ULIS Book Loop" className="w-28 h-28 object-contain drop-shadow-xl relative z-10 hover:scale-105 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-emerald-100/30 blur-3xl rounded-full w-64 h-64 mx-auto lg:mr-0 lg:ml-auto"></div>
+            <div className="relative z-10 bg-white/40 backdrop-blur-md p-8 rounded-[3rem] border border-emerald-100 shadow-2xl shadow-emerald-500/10 hover:scale-105 transition-transform duration-500">
+              <img src="/images/logo.png" alt="Logo ULIS Book Loop" className="w-40 h-40 md:w-56 md:h-56 object-contain drop-shadow-2xl" />
+            </div>
           </motion.div>
-          <motion.p
-             initial={{ opacity: 0, y: 20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true }}
-             transition={{ delay: 0.3, duration: 0.6 }}
-             className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto font-medium"
-          >
-            ULIS BOOK – LOOP là nền tảng hỗ trợ sinh viên ULIS trao đổi, mua bán giáo trình cũ một cách dễ dàng. Dự án giúp tối ưu chi phí học tập và tận dụng lại nguồn tài liệu sẵn có trong cộng đồng sinh viên.
-          </motion.p>
         </div>
 
         {/* Vấn đề đặt ra */}
