@@ -99,10 +99,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="font-heading text-5xl font-black leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl pb-4 text-emerald-950 drop-shadow-sm"
+            className="font-heading text-4xl font-black leading-[1.0] tracking-tight sm:text-5xl lg:text-6xl pb-4 text-emerald-600 drop-shadow-sm"
           >
             Trao sách cũ – <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Nhận tri thức</span>
+            Nhận tri thức
           </motion.h1>
 
           <motion.p 
