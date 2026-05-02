@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 :root {
-  --bg-dark: #040a1b;
-  --text-main: #e6eefc;
+  --bg-dark: #ECFDF5;
+  --text-main: #064E3B;
 }
 
 * {
@@ -76,5 +76,40 @@ section[id] {
 @layer utilities {
   .font-heading {
     font-family: "Poppins", "Inter", system-ui, sans-serif;
+  }
+
+  @keyframes bubble-rise {
+    0% {
+      transform: translateY(120vh) scale(0.8);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-20vh) scale(1.1);
+      opacity: 0;
+    }
+  }
+
+  @keyframes bubble-sway {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(20px);
+    }
+  }
+
+  .animate-bubble-rise {
+    animation: bubble-rise linear infinite;
+  }
+
+  .animate-bubble-sway {
+    animation: bubble-sway ease-in-out infinite;
+    animation-duration: 4s;
   }
 }

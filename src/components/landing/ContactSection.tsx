@@ -14,17 +14,17 @@ export default function ContactSection() {
   const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
 
   return (
-    <section id="contact" ref={ref} className="relative overflow-hidden bg-brand-darkest py-20 sm:py-32">
+    <section id="contact" ref={ref} className="relative overflow-hidden bg-emerald-950 py-20 sm:py-32">
       <motion.div style={{ y }} className="absolute inset-0 z-0">
         <Image
           src="/images/11.png"
           alt="ULIS Book Loop Contact Background"
           fill
-          className="object-cover opacity-30"
+          className="object-cover opacity-60"
           sizes="100vw"
         />
       </motion.div>
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-brand-darkest via-brand-darkest/80 to-brand-darkest/40" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-emerald-950/80 via-emerald-950/40 to-transparent" />
 
       <div className="relative z-20 mx-auto grid w-full max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         <motion.div
@@ -40,35 +40,35 @@ export default function ContactSection() {
           <h2 className="font-heading text-3xl font-bold text-white sm:text-5xl leading-tight">
             Bạn cần hỗ trợ thêm?
           </h2>
-          <p className="mt-6 text-lg text-brand-muted leading-relaxed max-w-md">
+          <p className="mt-6 text-lg text-emerald-100/60 leading-relaxed max-w-md">
             Đội ngũ ULIS Book Loop luôn sẵn sàng hỗ trợ bạn tham gia cộng đồng, tìm giáo trình phù hợp và kết nối nhanh với sinh viên cùng chuyên ngành.
           </p>
 
           <div className="mt-10 space-y-6">
             <div className="flex items-center gap-4 text-white">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                <Mail size={24} className="text-brand-light" />
+                <Mail size={24} className="text-emerald-300" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-brand-muted">Email</p>
+                <p className="text-sm font-semibold text-emerald-100/60">Email</p>
                 <p className="text-base font-medium">ulisbookloop@gmail.com</p>
               </div>
             </div>
             <div className="flex items-center gap-4 text-white">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                <Phone size={24} className="text-brand-light" />
+                <Phone size={24} className="text-emerald-300" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-brand-muted">Hotline</p>
+                <p className="text-sm font-semibold text-emerald-100/60">Hotline</p>
                 <p className="text-base font-medium">0368004205</p>
               </div>
             </div>
             <div className="flex items-center gap-4 text-white">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                <MapPin size={24} className="text-brand-light" />
+                <MapPin size={24} className="text-emerald-300" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-brand-muted">Địa chỉ</p>
+                <p className="text-sm font-semibold text-emerald-100/60">Địa chỉ</p>
                 <p className="text-base font-medium">Trường Đại học Ngoại ngữ - ĐHQGHN</p>
               </div>
             </div>
@@ -88,36 +88,36 @@ export default function ContactSection() {
             <form className="space-y-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
               <div className="grid gap-6 sm:grid-cols-2">
                 <label className="block">
-                  <span className="mb-2 block text-sm font-semibold text-brand-light">Họ và tên</span>
+                  <span className="mb-2 block text-sm font-semibold text-emerald-300">Họ và tên</span>
                   <input
                     type="text"
                     placeholder="Nhập họ và tên"
-                    className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3.5 text-base text-white placeholder-white/40 outline-none transition-all focus:border-brand-light focus:bg-white/10 focus:ring-4 focus:ring-brand-light/20"
+                    className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3.5 text-base text-white placeholder-white/40 outline-none transition-all focus:border-emerald-300 focus:bg-white/10 focus:ring-4 focus:ring-emerald-300/20"
                   />
                 </label>
 
                 <label className="block">
-                  <span className="mb-2 block text-sm font-semibold text-brand-light">Email</span>
+                  <span className="mb-2 block text-sm font-semibold text-emerald-300">Email</span>
                   <input
                     type="email"
                     placeholder="Email của bạn"
-                    className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3.5 text-base text-white placeholder-white/40 outline-none transition-all focus:border-brand-light focus:bg-white/10 focus:ring-4 focus:ring-brand-light/20"
+                    className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3.5 text-base text-white placeholder-white/40 outline-none transition-all focus:border-emerald-300 focus:bg-white/10 focus:ring-4 focus:ring-emerald-300/20"
                   />
                 </label>
               </div>
 
               <label className="block">
-                <span className="mb-2 block text-sm font-semibold text-brand-light">Nội dung cần hỗ trợ</span>
+                <span className="mb-2 block text-sm font-semibold text-emerald-300">Nội dung cần hỗ trợ</span>
                 <textarea
                   rows={4}
                   placeholder="Bạn muốn hỏi gì..."
-                  className="w-full resize-none rounded-xl border border-white/20 bg-white/5 px-4 py-3.5 text-base text-white placeholder-white/40 outline-none transition-all focus:border-brand-light focus:bg-white/10 focus:ring-4 focus:ring-brand-light/20"
+                  className="w-full resize-none rounded-xl border border-white/20 bg-white/5 px-4 py-3.5 text-base text-white placeholder-white/40 outline-none transition-all focus:border-emerald-300 focus:bg-white/10 focus:ring-4 focus:ring-emerald-300/20"
                 ></textarea>
               </label>
 
               <button
                 type="submit"
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-4 text-base font-bold text-brand-darkest transition-all hover:bg-brand-lightest hover:scale-[1.02]"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-4 text-base font-bold text-emerald-950 transition-all hover:bg-emerald-50 hover:scale-[1.02]"
               >
                 Gửi liên hệ
                 <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
