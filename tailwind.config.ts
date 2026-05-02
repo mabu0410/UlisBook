@@ -11,6 +11,8 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)", "sans-serif"],
         heading: ["var(--font-outfit)", "sans-serif"],
+        display: ["'Playfair Display'", "Georgia", "serif"],
+        body: ["'Plus Jakarta Sans'", "system-ui", "sans-serif"],
       },
       colors: {
         brand: {
@@ -41,10 +43,6 @@ const config: Config = {
         "muted-blue": "#BBF7D0",
         "text-main": "#064E3B",
         "text-sub": "#64748B",
-      },
-      fontFamily: {
-        display: ["'Playfair Display'", "Georgia", "serif"],
-        body: ["'Plus Jakarta Sans'", "system-ui", "sans-serif"],
       },
       borderRadius: {
         "2xl": "1rem",
