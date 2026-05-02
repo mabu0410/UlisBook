@@ -96,7 +96,7 @@ export default function HowItWorksSection() {
             className="bg-emerald-950 rounded-[2.5rem] p-8 sm:p-12 shadow-2xl shadow-emerald-950/30 border border-emerald-950 text-white relative h-full flex flex-col overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/20 rounded-bl-full pointer-events-none blur-2xl" />
-            <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay pointer-events-none"></div>
+            <div className="absolute inset-0 bg-emerald-500/5 mix-blend-overlay pointer-events-none"></div>
             
             <h3 className="text-3xl font-extrabold text-white mb-12 border-b border-white/20 pb-5 font-heading relative z-10">3 bước bán sách siêu nhanh</h3>
             

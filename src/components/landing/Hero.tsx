@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import BubbleBackground from "@/components/BubbleBackground";
+import AnimatedGradientGlow from "@/components/landing/AnimatedGradientGlow";
+import FloatingBookIcons from "@/components/landing/FloatingBookIcons";
+import { useEffect, useState } from "react";
 
 const BULLETS = [
   "Đăng ký miễn phí 100%",
@@ -17,9 +20,42 @@ export default function Hero() {
   const y1 = useTransform(scrollY, [0, 500], [0, 80]);
   const y2 = useTransform(scrollY, [0, 500], [0, -80]);
 
+  // Mouse Parallax Effect
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { damping: 25, stiffness: 150 });
+  const springY = useSpring(mouseY, { damping: 25, stiffness: 150 });
+
+  const rotateX = useTransform(springY, [-300, 300], [5, -5]);
+  const rotateY = useTransform(springX, [-300, 300], [-5, 5]);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    mouseX.set(e.clientX - centerX);
+    mouseY.set(e.clientY - centerY);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <section
       id="hero"
+      onMouseMove={!isMobile ? handleMouseMove : undefined}
+      onMouseLeave={!isMobile ? handleMouseLeave : undefined}
       className="relative min-h-screen overflow-hidden bg-cover bg-center flex items-center pt-24 pb-16 lg:pt-32 lg:pb-24"
       style={{ backgroundImage: "url('/images/image.png')" }}
     >
@@ -29,29 +65,9 @@ export default function Hero() {
       {/* Bubble effect */}
       <BubbleBackground count={24} minSize={10} maxSize={42} />
       
-      {/* Floating Animated Blobs */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden z-0">
-        <motion.div
-          animate={{
-            y: [0, -40, 0],
-            x: [0, 30, 0],
-            scale: [1, 1.15, 1],
-            rotate: [0, 10, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -left-32 -top-16 h-[30rem] w-[30rem] rounded-full bg-emerald-100/40 blur-[100px] mix-blend-multiply"
-        />
-        <motion.div
-          animate={{
-            y: [0, 50, 0],
-            x: [0, -40, 0],
-            scale: [1, 1.25, 1],
-            rotate: [0, -15, 0],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-0 right-0 h-[35rem] w-[35rem] rounded-full bg-teal-100/30 blur-[120px] mix-blend-multiply"
-        />
-      </div>
+      {/* Animated Glow Blobs & Icons */}
+      <AnimatedGradientGlow />
+      <FloatingBookIcons />
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8">
         <motion.div
@@ -61,10 +77,10 @@ export default function Hero() {
           className="max-w-2xl"
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
-            className="mb-8 inline-flex items-center rounded-full border border-emerald-200 bg-white/70 backdrop-blur-md px-5 py-2 shadow-sm hover:bg-white/90 transition-colors duration-300"
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mb-8 inline-flex items-center rounded-full border border-emerald-200 bg-white/70 backdrop-blur-md px-5 py-2 shadow-sm hover:bg-white/90 transition-all duration-300 hover:scale-105"
           >
             <span className="relative flex h-2 w-2 mr-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
@@ -79,13 +95,23 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          <h1 className="font-heading text-5xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl pb-3 text-transparent bg-clip-text bg-gradient-to-br from-emerald-950 via-emerald-800 to-teal-600 drop-shadow-sm">
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="font-heading text-5xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl pb-3 text-transparent bg-clip-text bg-gradient-to-br from-emerald-950 via-emerald-800 to-teal-600 drop-shadow-sm"
+          >
             Trao sách cũ – <br />Nhận tri thức
-          </h1>
+          </motion.h1>
 
-          <p className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl font-medium max-w-xl">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl font-medium max-w-xl"
+          >
             Kết nối sinh viên ULIS thông qua việc trao đổi, mua bán giáo trình cũ một cách nhanh chóng, tiết kiệm và tiện lợi.
-          </p>
+          </motion.p>
 
           <ul className="mt-10 space-y-4">
             {BULLETS.map((item, i) => (
@@ -106,22 +132,22 @@ export default function Hero() {
 
           <div className="mt-12 flex flex-col items-start gap-4">
             <motion.a
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              whileHover={{ scale: 1.03, translateY: -2 }}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              whileHover={{ scale: 1.05, translateY: -2 }}
               whileTap={{ scale: 0.98 }}
               href="#register"
-              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-emerald-600 to-teal-500 px-10 py-5 text-lg font-bold text-white shadow-xl shadow-emerald-500/25 transition-all hover:scale-105 hover:shadow-emerald-500/40 ring-1 ring-white/10"
+              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-emerald-600 to-teal-500 px-10 py-5 text-lg font-bold text-white shadow-xl shadow-emerald-500/25 transition-all hover:shadow-emerald-500/40 ring-1 ring-white/10"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer"></span>
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none"></span>
               Đăng ký tham gia ngay
               <ArrowRight size={22} className="transition-transform group-hover:translate-x-1.5" />
             </motion.a>
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.2 }}
+              transition={{ delay: 1.3 }}
               className="text-sm font-semibold text-slate-500 ml-3 flex items-center gap-2"
             >
               <span className="text-xl">✨</span> Hoàn toàn miễn phí 100%
@@ -130,14 +156,19 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          style={{ y: y1 }}
+          style={{ 
+            y: y1,
+            rotateX: !isMobile ? rotateX : 0,
+            rotateY: !isMobile ? rotateY : 0,
+            perspective: 1000
+          }}
           initial={{ opacity: 0, scale: 0.92, filter: "blur(10px)" }}
           animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="relative lg:ml-auto w-full max-w-lg"
         >
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[3rem] bg-emerald-50/50 p-3 shadow-2xl shadow-emerald-500/20 rotate-1 hover:rotate-0 transition-all duration-700 ease-out backdrop-blur-sm border border-emerald-100">
-            <div className="absolute inset-0 rounded-[3rem] border-2 border-white/60 z-20"></div>
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[3rem] bg-emerald-50/50 p-3 shadow-2xl shadow-emerald-500/20 rotate-1 hover:rotate-0 transition-all duration-700 ease-out backdrop-blur-sm border border-emerald-100 group">
+            <div className="absolute inset-0 rounded-[3rem] border-2 border-white/60 z-20 group-hover:border-white transition-colors"></div>
             <div className="relative h-full w-full overflow-hidden rounded-[2.5rem] shadow-inner">
               <Image
                 src="/images/1.jpeg"
