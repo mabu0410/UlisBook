@@ -60,8 +60,7 @@ export default function Hero() {
       style={{ backgroundImage: "url('/images/image.png')" }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-white/85 via-emerald-50/80 to-teal-100/75" />
-      <div className="absolute inset-0 z-0 bg-white/20 backdrop-blur-[1px]" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-white/40 via-white/20 to-transparent" />
 
       {/* Bubble effect */}
       <BubbleBackground count={24} minSize={10} maxSize={42} />
